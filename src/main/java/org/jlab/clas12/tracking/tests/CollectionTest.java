@@ -29,6 +29,12 @@ public class CollectionTest {
         }
         return hits;
     }
+    
+    public static void showSorted(HitCollection hits){
+        System.out.println("BEFORE THE SORT \n" + hits);
+        hits.sort();
+        System.out.println("AFTER  THE SORT \n" + hits);
+    }
     // SELECT hits from sector 1 and print them
     public static void show(HitCollection hits){
         
@@ -78,10 +84,13 @@ public class CollectionTest {
         }
         
         hits.iterator(layers);
-        
+        System.out.println("DATA");
+        System.out.println(hits);
         // print components from hits in layer 1
         hits.setIterator(layers.get(0));
-        
+        System.out.println("DATA SELECTED");
+        System.out.println(hits);
+        /*
         for(int i = 0; i < hits.count(); i++){
             System.out.printf(" hit = %4d , component = %5d cluster = %5d\n",
                     i,hits.component(i),hits.association(i));
@@ -92,7 +101,7 @@ public class CollectionTest {
         for(int i = 0; i < hits.count(); i++){
             System.out.printf(" hit = %4d , component = %5d cluster = %5d\n",
                     i,hits.component(i),hits.association(i));
-        }
+        }*/
         
     }
     
@@ -108,15 +117,18 @@ public class CollectionTest {
         }
         
         hits.iterator(layers);
-        
+        System.out.println("DATA");
+        System.out.println(hits);
         // print components from hits in layer 1
         hits.setIterator(layers.get(0));
+        System.out.println(hits);
+        /*
         int clusterID = 2;
         for(int i = 0; i < hits.count(); i++){
             hits.association(i, clusterID);
             System.out.printf(" hit = %4d , component = %5d cluster = %5d\n",
                     i,hits.component(i), hits.association(i));
-        }
+        }*/
         
     }
     
@@ -128,14 +140,15 @@ public class CollectionTest {
         
         Bank  bank  = new Bank(reader.getSchemaFactory().getSchema("DC::tdc"));
         
-        for(int i = 0; i < 10; i++){
-            reader.nextEvent(event);            
+        for(int i = 0; i < 5; i++){
+            reader.nextEvent(event);
             event.read(bank);            
             HitCollection hits = CollectionTest.readCollection(bank);
-            CollectionTest.show(hits);
-            CollectionTest.showLayers(hits);
-            CollectionTest.showLayersData(hits);
-            CollectionTest.setLayerClusters(hits);
+            //CollectionTest.show(hits);
+            //CollectionTest.showLayers(hits);
+            //CollectionTest.showLayersData(hits);
+            //CollectionTest.setLayerClusters(hits);
+            CollectionTest.showSorted(hits);
         }
     }
 }
