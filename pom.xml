@@ -47,7 +47,7 @@
               <descriptorRef>jar-with-dependencies</descriptorRef> 
 <!--              <descriptorRef>all</descriptorRef> -->
             </descriptorRefs>
-	    <finalName>jnp-hipo-${project.version}-all</finalName>
+	    <finalName>clas12tracking-${project.version}-all</finalName>
 	    <appendAssemblyId>false</appendAssemblyId>
           </configuration>
           <executions>
